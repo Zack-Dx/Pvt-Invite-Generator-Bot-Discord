@@ -23,8 +23,24 @@ class DiscordController {
         const errorResponse = await response.json();
         throw new Error(`Discord API Error: ${errorResponse.message}`);
       }
-      const { code } = await response.json();
-      return res.status(200).json({ inviteUrl: `https://discord.gg/${code}` });
+      const {
+        code,
+        guild: { name, icon },
+        created_at,
+        expires_at,
+        max_age,
+        max_uses,
+      } = await response.json();
+
+      return res.status(200).json({
+        inviteUrl: `https://discord.gg/${code}`,
+        validity: `${max_age / 60} minutes`,
+        max_uses,
+        created_at,
+        expires_at,
+        serverName: name,
+        serverIcon: `${process.env.DISCORD_ICON_URL}${process.env.DISCORD_SERVER_ID}/${icon}`,
+      });
     } catch (error) {
       res.status(500).json({ error: 'Failed to generate invite' });
     }

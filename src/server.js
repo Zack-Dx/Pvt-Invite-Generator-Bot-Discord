@@ -5,7 +5,7 @@ import discordClient from './config/discord.js';
 import discordRouter from './routes/discord.js';
 import rateLimiterMiddleware from './middleware/limiter.js';
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5500;
 app.set('trust proxy', 1);
 
 // Middlewares
