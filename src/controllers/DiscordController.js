@@ -1,7 +1,7 @@
 class DiscordController {
   static async createInvite(req, res) {
     try {
-      const discordApiUrl = `https://discord.com/api/v10/channels/${process.env.DISCORD_GENERAL_CHANNEL_ID}/invites`;
+      const discordApiUrl = `${process.env.DISCORD_BASE_URL}/channels/${process.env.DISCORD_GENERAL_CHANNEL_ID}/invites`;
 
       const headers = {
         Authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}`,
