@@ -1,4 +1,4 @@
-class DiscordController {
+class InviteController {
   static async createInvite(req, res) {
     try {
       const discordApiUrl = `${process.env.DISCORD_BASE_URL}/channels/${process.env.DISCORD_GENERAL_CHANNEL_ID}/invites`;
@@ -47,4 +47,4 @@ class DiscordController {
   }
 }
 
-export default DiscordController;
+export default InviteController;

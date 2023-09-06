@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import discordClient from './config/discord.js';
-import discordRouter from './routes/discord.js';
+import inviteRouter from './routes/invite.js';
 import rateLimiterMiddleware from './middleware/limiter.js';
 const app = express();
 const PORT = process.env.PORT || 5500;
@@ -12,7 +12,7 @@ app.set('trust proxy', 1);
 app.use(rateLimiterMiddleware);
 
 // Routers
-app.use('/discord', discordRouter);
+app.use('/discord', inviteRouter);
 
 app.listen(PORT, () => {
   console.log(`Server started on ${PORT}`);
