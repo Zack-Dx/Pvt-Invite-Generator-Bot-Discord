@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
-import discordClient from './config/discord.js';
 import inviteRouter from './routes/invite.js';
 import rateLimiterMiddleware from './middleware/limiter.js';
 const app = express();
@@ -17,5 +16,3 @@ app.use('/discord', inviteRouter);
 app.listen(PORT, () => {
   console.log(`Server started on ${PORT}`);
 });
-
-discordClient.login(process.env.DISCORD_BOT_TOKEN);
