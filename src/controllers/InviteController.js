@@ -18,6 +18,7 @@ class InviteController {
       res.status(500).json({ error: 'Failed to fetch invites.' });
     }
   }
+
   static async createInvite(req, res) {
     const createInviteApi = `${process.env.DISCORD_BASE_URL}channels/${process.env.DISCORD_GENERAL_CHANNEL_ID}/invites`;
     const headers = {

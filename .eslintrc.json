@@ -1,13 +1,27 @@
 {
-  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "extends": "eslint:recommended",
+  "overrides": [
+    {
+      "env": {
+        "node": true
+      },
+      "files": [".eslintrc.{js,cjs}"],
+      "parserOptions": {
+        "sourceType": "script"
+      }
+    }
+  ],
   "parserOptions": {
-    "ecmaVersion": 2021
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
   "rules": {
-    "semi": ["error", "always"],
+    "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
-    "indent": ["error", 2],
-    "no-unused-vars": "warn",
-    "no-extra-semi": "error"
+    "semi": ["error", "always"]
   }
 }
