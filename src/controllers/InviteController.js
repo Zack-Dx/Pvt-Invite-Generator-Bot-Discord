@@ -1,3 +1,4 @@
+import inviteLinks from '../invites/inviteDetails.js';
 class InviteController {
   static async getAllInvites(req, res) {
     const getInvitesAPI = `${process.env.DISCORD_BASE_URL}guilds/${process.env.DISCORD_SERVER_ID}/invites`;
@@ -30,7 +31,6 @@ class InviteController {
       headers,
       body: JSON.stringify({
         max_age: 900, // 15 minutes
-        max_uses: 1,
         temporary: false,
         unique: true,
       }),
@@ -49,7 +49,7 @@ class InviteController {
         max_age,
         max_uses,
       } = await response.json();
-
+      inviteLinks.push(`https://discord.gg/${code}`);
       return res.status(200).json({
         inviteUrl: `https://discord.gg/${code}`,
         validity: `${max_age / 60} minutes`,
